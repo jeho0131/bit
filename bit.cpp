@@ -13,24 +13,30 @@ int main() {
 
 	unsigned int c;
 	int ni;
-	uint8_t nn;
-
-	for(int j = 0; j <= 32; j++) {
-		if (pow(2,j) < num && pow(2, j+1) >= num) {
-			c = pow(2,j+1);
-			ni = j;
-		}
+	unsigned int nn;
+	
+	if(num == 1) {
+		printf("1");
 	}
 	
-	for(int i = 0; i <= ni+1; i++) { 
-		nn = c & num;
-		if (nn > 0) {
-			printf("1");
+	else {
+		for(int j = 0; j <= 32; j++) {
+			if (pow(2, j+1) <= num) {
+				c = pow(2,j+1);
+				ni = j;
+			}
 		}
-		else {
-			printf("0");
-		}		
-		c = c >> 1;
+		
+		for(int i = 0; i <= ni+1; i++) { 
+			nn = c & num;
+			if (nn > 0) {
+				printf("1");
+			}
+			else {
+				printf("0");
+			}		
+			c = c >> 1;
+		}
 	}
 	
 	return 0;
